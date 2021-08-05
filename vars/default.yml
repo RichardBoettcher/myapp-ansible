@@ -1,0 +1,6 @@
+---
+app_user: "sandcadmin"
+http_host: "test_host"
+http_conf: "test_domain.conf"
+http_port: "80"
+disable_default: true
