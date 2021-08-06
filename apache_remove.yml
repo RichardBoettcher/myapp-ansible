@@ -9,7 +9,7 @@
         name: apache2
         state: stopped
         notify: Uninstall Apache
-  handler:
+  handlers:
     - name: Uninstall Apache
       apt:
         name: apache2
