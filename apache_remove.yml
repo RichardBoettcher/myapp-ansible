@@ -3,19 +3,22 @@
   become: yes
   vars_files:
     - vars/default.yml
+    
   tasks:
     - name: Stop Apache
       service:
         name: apache2
         state: stopped
-        notify: Uninstall Apache
+        notify: "start uninstal"
+        
   handlers:
     - name: Uninstall Apache
       apt:
         name: apache2
         state: absent
         register: uninstalled
-        listen: start uninstall
+        listen: "start uninstal"
+        
     - name: Clean Up firewall rules
       ufw:
         rule: allow
@@ -23,5 +26,5 @@
         proto: tcp
         delete: yes
         when: uninstalled
-        listen: start uninstall
+        listen: "start uninstal"
 ...
