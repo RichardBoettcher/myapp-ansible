@@ -9,7 +9,7 @@
       service:
         name: apache2
         state: stopped
-        notify: "start uninstal"
+      notify: "start uninstal"
         
   handlers:
     - name: Uninstall Apache
@@ -17,7 +17,7 @@
         name: apache2
         state: absent
         register: uninstalled
-        listen: "start uninstal"
+      listen: "start uninstal"
         
     - name: Clean Up firewall rules
       ufw:
@@ -25,6 +25,6 @@
         port: "{{ http_port }}"
         proto: tcp
         delete: yes
-        when: uninstalled
-        listen: "start uninstal"
+      when: uninstalled
+      listen: "start uninstal"
 ...
