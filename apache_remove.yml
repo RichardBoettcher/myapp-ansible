@@ -1,0 +1,22 @@
+---
+- hosts: webservers 
+  become: yes
+  vars_files:
+    - vars/default.yml
+  tasks:
+    - name: Stop Apache
+      service:
+        name: apache2
+        state: stopped
+        notify: Uninstall Apache
+  handler:
+    - name: Uninstall Apache
+      apt:
+        name: apache2
+        state: absent
+      ufw:
+        rule: allow
+        port: "{{ http_port }}"
+        proto: tcp
+        delete: yes
+...
