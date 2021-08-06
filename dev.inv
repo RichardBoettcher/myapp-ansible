@@ -1,2 +1,2 @@
 [webservers]
-10.20.240.201 ansible_user=sandcadmin
+123.123.123.123 ansible_user=dummy
