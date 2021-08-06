@@ -16,7 +16,7 @@
       apt:
         name: apache2
         state: absent
-        register: uninstalled
+      register: uninstalled
       listen: "start uninstal"
         
     - name: Clean Up firewall rules
