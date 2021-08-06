@@ -14,11 +14,14 @@
       apt:
         name: apache2
         state: absent
-        notify: Clean Up firewall rules
+        register: uninstalled
+        listen: start uninstall
     - name: Clean Up firewall rules
       ufw:
         rule: allow
         port: "{{ http_port }}"
         proto: tcp
         delete: yes
+        when: uninstalled
+        listen: start uninstall
 ...
