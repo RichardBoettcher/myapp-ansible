@@ -14,6 +14,8 @@
       apt:
         name: apache2
         state: absent
+        notify: Clean Up firewall rules
+    - name: Clean Up firewall rules
       ufw:
         rule: allow
         port: "{{ http_port }}"
