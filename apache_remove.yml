@@ -1,5 +1,5 @@
 ---
-- hosts: webservers 
+- hosts: "{{ variable_host | default('webservers') }}" 
   become: yes
   vars_files:
     - vars/default.yml
