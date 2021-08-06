@@ -1,5 +1,5 @@
 ---
-- hosts: webservers 
+- hosts: "{{ variable_host | default('webservers') }}"
   become: yes
   vars_files:
     - vars/default.yml
@@ -54,18 +54,4 @@
         name: apache2
         state: restarted
         
-#   tasks:
-#     - name: Install packages
-#       yum:
-#         name: "httpd"
-#         state: "present"
-#     - name: Start Apache server
-#       service:
-#         name: httpd
-#         state: started
-#         enabled: True
-#     - name: Deploy static website
-#       copy:
-#         src: index.html
-#         dest: /var/www/html/
 ...
